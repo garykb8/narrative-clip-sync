@@ -1,0 +1,38 @@
+name: NarrativeClipSync
+options:
+  bundleIdPrefix: io.github.garykb8
+  developmentLanguage: en
+  deploymentTarget:
+    macOS: "15.0"
+packages:
+  ClipKit:
+    path: ../ClipKit
+targets:
+  NarrativeClipSync:
+    type: application
+    platform: macOS
+    sources: [Sources]
+    dependencies:
+      - package: ClipKit
+        product: ClipKit
+    info:
+      path: Sources/Info.plist
+      properties:
+        CFBundleDisplayName: Narrative Clip Sync
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [en, zh-Hant]
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        LSUIElement: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.garykb8.NarrativeClipSync
+        PRODUCT_NAME: Narrative Clip Sync
+        SWIFT_VERSION: "5.0"
+        SWIFT_EMIT_LOC_STRINGS: YES
+        MACOSX_DEPLOYMENT_TARGET: "15.0"
+        # Ad-hoc "Sign to Run Locally" (no paid Developer ID), no sandbox, so IOUSBHost and ~/Pictures need no entitlements.
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGN_STYLE: Manual
+        ENABLE_HARDENED_RUNTIME: NO
+        ENABLE_USER_SCRIPT_SANDBOXING: NO
